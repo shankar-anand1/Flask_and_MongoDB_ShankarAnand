@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Student Form</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 520px; margin: 40px auto; }
+    label { display: block; margin-top: 12px; }
+    input, textarea { width: 100%; padding: 8px; box-sizing: border-box; }
+    button { margin-top: 16px; padding: 8px 16px; }
+    .err { background: #ffe6e6; color: #a40000; padding: 10px; margin-bottom: 16px; }
+    a { color: #333; }
+  </style>
+</head>
+<body>
+  <h2>Submit details</h2>
+  <p><a href="/api">View JSON API</a></p>
+
+  {% if error %}
+  <div class="err">Error: {{ error }}</div>
+  {% endif %}
+
+  <form method="POST" action="/submit">
+    <label>Name</label>
+    <input type="text" name="name" value="{{ name or '' }}">
+
+    <label>Email</label>
+    <input type="email" name="email" value="{{ email or '' }}">
+
+    <label>Message</label>
+    <textarea name="message" rows="4">{{ message or '' }}</textarea>
+
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
